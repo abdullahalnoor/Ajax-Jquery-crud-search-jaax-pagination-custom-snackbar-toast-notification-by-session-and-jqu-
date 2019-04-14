@@ -20,5 +20,7 @@
 
     <li><a class="app-menu__item @if(request()->path() == 'category') active @endif" href="{{route('category')}}"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Category</span></a></li>
 
+    <li><a class="app-menu__item @if(request()->path() == 'text') active @endif" href="{{route('text')}}"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">text</span></a></li>
+
   </ul>
 </aside>

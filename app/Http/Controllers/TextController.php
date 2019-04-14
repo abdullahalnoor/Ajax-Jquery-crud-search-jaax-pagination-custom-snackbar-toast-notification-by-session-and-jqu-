@@ -9,7 +9,8 @@ use Session;
 class TextController extends Controller
 {
     public function index(){
-        return view('admin.text.index');
+        $text = Text::all();
+        return view('admin.text.index',compact('text'));
     }
     public function create(){
         return view('admin.text.create');
@@ -29,7 +30,7 @@ class TextController extends Controller
         if($request->hasFile('image')){
             $image = $request->file('image');
             $imageName = uniqid().$image->getClientOriginalName();
-            $path = "admin/img";
+            $path = "admin/img/";
             $image->move($path,$imageName);
             $url = $path.$imageName;
 

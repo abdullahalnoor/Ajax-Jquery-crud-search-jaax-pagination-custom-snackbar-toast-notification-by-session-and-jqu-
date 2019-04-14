@@ -31,12 +31,21 @@
         <div class="card-header">
           Category Information
 
-          <button type="button" class="btn btn-primary float-right" id="addCategory">
+          <a href="{{route('add.text')}}" class="btn btn-primary float-right" id="addCategory">
             Add Category
-          </button>
+          </a>
 
         </div>
         <div class="card-body ">
+
+
+
+
+
+
+
+
+
           <div class="table-responsive ">
             <table class="table load" id="refreshTable">
               <thead>
@@ -48,7 +57,35 @@
                 </tr>
               </thead>
               <tbody>
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                  <ol class="carousel-indicators">
 
+                    @foreach ($text as $key => $slide)
+                    <li data-target="#carouselExampleIndicators" data-slide-to="{{$key}}" class="{{ $key == 0 ? ' active' : '' }}"></li>
+                    @endforeach
+
+                  </ol>
+                  <div class="carousel-inner">
+
+                    @foreach ($text as $key => $slide)
+                    <div class="carousel-item {{ $key == 0 ? ' active' : '' }}">
+                      <img src="{{asset($slide->image)}}" class="d-block w-100" alt="{{$slide->name}}" style="height:500px;">
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5>{{$slide->name}}</h5>
+                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                      </div>
+                    </div>
+                    @endforeach
+                  </div>
+                  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
 
               </tbody>
               <tfoot>
